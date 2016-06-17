@@ -1,0 +1,35 @@
+sinclude $(GENERAL_RULES)/mplib$(WM_MPLIB)
+sinclude $(RULES)/mplib$(WM_MPLIB)
+
+HDF5_DIR=$(WM_PROJECT_INST_DIR)/installs/hdf5
+
+
+H5FLAGS  = -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE  -fPIC -Wno-old-style-cast
+H5INC    = -I$(HDF5_DIR)/include
+H5LIBS   = -L$(HDF5_DIR)/lib -lhdf5 -fPIC -lz -ldl -lrt -lm \
+           -Wl,-rpath -Wl,$(HDF5_DIR)/lib
+
+EXE_INC = -DWRITE_SP \
+    $(PFLAGS) $(PINC) \
+    $(H5FLAGS) $(H5INC) \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(HDF5_DIR)/include \
+    -I/usr/include/openmpi-x86_64/
+
+
+
+
+LIB_LIBS = \
+    $(PLIBS) \
+    $(H5LIBS) \
+    -L$(FOAM_USER_LIBBIN) \
+    -L$(MPI_ARCH_PATH) \
+    -L$(HDF5_DIR)/lib \
+    -lgenericPatchFields \
+    -lmeshTools \
+    -lfiniteVolume
+
+
+
+
