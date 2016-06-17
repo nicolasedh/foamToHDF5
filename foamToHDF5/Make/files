@@ -1,0 +1,4 @@
+
+foamToHDF5.C
+
+EXE = $(FOAM_USER_APPBIN)/foamToHDF5

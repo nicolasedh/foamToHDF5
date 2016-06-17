@@ -1,0 +1,26 @@
+sinclude $(GENERAL_RULES)/mplib$(WM_MPLIB)
+sinclude $(RULES)/mplib$(WM_MPLIB)
+
+HDF5_DIR=/home/nico/OpenFOAM/installs/hdf5
+
+
+H5FLAGS  = -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE  -fPIC -Wno-old-style-cast -DWRITE_SP
+H5INC    = $(HDF5_DIR)/include
+H5LIBS   = -L$(HDF5_DIR)/lib -lhdf5 -fPIC -lz -ldl -lrt -lm \
+           -Wl,-rpath -Wl,$(HDF5_DIR)/lib
+
+EXE_INC = -Wno-old-stylecast  \
+    $(PFLAGS) $(PINC) \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(H5INC) \
+    -I../exportFoamToHDF5
+
+
+
+EXE_LIBS = \
+    $(PLIBS) \
+    -L$(FOAM_USER_LIBBIN) \
+    -lexportToHDF5 \
+    -lfiniteVolume
+

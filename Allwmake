@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo do read the readme first
+cd exportFoamToHDF5
+wmake libso
+cd ../foamToHDF5
+wmake
+
+cd pvreader
+./Allwmake
+

@@ -1,7 +1,7 @@
 # git-ls-files --others --exclude-from=.git/info/exclude
 # Lines that start with '#' are comments.
 # ignore example resultsfiles
-build
+build*
 *.foamhdf5
 polyMesh
 [1-9]*
