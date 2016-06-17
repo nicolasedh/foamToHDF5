@@ -1,0 +1,40 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+   <SourceProxy name="H5FoamReader" 
+                class="vtkH5FoamReader"
+                label="H5FoamReader">
+     <Documentation
+       short_help="Read a h5foam file with polyhedral cells"
+       long_help="Read a h5foam file .">
+       Some long text
+     </Documentation>
+
+     <!-- Send discrete time info to the animation panel -->
+     <DoubleVectorProperty
+       name="TimestepValues"
+       repeatable="1"
+       information_only="1">
+       <TimeStepsInformationHelper/>
+       <Documentation>
+         Available timestep values.
+       </Documentation>
+     </DoubleVectorProperty>
+
+     <StringVectorProperty
+        name="FileName"
+        animateable="0"
+        command="SetFileName"
+        number_of_elements="1">
+        <FileListDomain name="files"/>
+        <Documentation>
+	  Specify name of file to open
+        </Documentation>
+     </StringVectorProperty>
+
+     <Hints>
+      <ReaderFactory extensions="h5foam" file_description="H5Foam files with Polyhedral cells" />
+     </Hints>
+   <!-- End MyPNGReader -->
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

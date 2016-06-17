@@ -1,0 +1,28 @@
+f#!/bin/bash
+cwd=$PWD
+
+hdf5dir=$WM_PROJECT_INST_DIR/installs/hdf5
+mkdir -p build
+cd build
+HDF5_DIR=$hdf5dir cmake ../.
+
+
+make
+#make install
+#create a link of the lib and place it in paraview
+#so we can add it as a plugin
+cd $ParaView_DIR/lib/paraview-$ParaView_MAJOR
+ln -s $cwd/build/libH5FoamReader.so .
+
+
+#old stuff
+#base=$WM_PROJECT_INST_DIR/paraview/build/paraview/src
+#pvlibdir=$WM_PROJECT_INST_DIR/paraview/install/lib/paraview-5.0/
+#old cmake options
+#      -DParaView_DIR=$base/paraview-build/ \
+#      -DVTK_DIR=$base/paraview/VTK \
+#      ../.
+#      .DHDF5_DIR=$hdf5dir \
+#      -DHDF5_LIBRARIES=$hdf5dir/lib \
+#      -DHDF5_INCLUDE_DIRS=$hdf5dir/include \
+#      -DHDF5_BUILD=$WM_PROJECT_INST_DIR/build/hdf5-1.8.16 \      
