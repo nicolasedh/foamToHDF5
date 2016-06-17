@@ -34,3 +34,9 @@ make install
 Just run the ./Allwmake script and it might work.
 I've assumed that hdf5 was installed in the same
 location as above.
+
+Finaly to load the paraview plugin reader by
+starting paraview and gooing to tools->manage plugins
+Locate the libH5FoamReader.so in the lib dir of paraview
+Load it and tick auto load on start up
+
