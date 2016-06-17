@@ -12,10 +12,11 @@ log.*
 cellLevel
 pointLevel
 #QtCreator files
-#*.creator*
-#*.files
-#*.includes
+*.creator*
+*.files
+*.includes
 *.autosave
+CMakeLists.txt.user
 # editor and misc backup files - anywhere
 *~
 .*~
