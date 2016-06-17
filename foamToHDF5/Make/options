@@ -1,8 +1,7 @@
 sinclude $(GENERAL_RULES)/mplib$(WM_MPLIB)
 sinclude $(RULES)/mplib$(WM_MPLIB)
 
-HDF5_DIR=/home/nico/OpenFOAM/installs/hdf5
-
+HDF5_DIR=$(WM_PROJECT_INST_DIR)/installs/hdf5
 
 H5FLAGS  = -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE  -fPIC -Wno-old-style-cast -DWRITE_SP
 H5INC    = $(HDF5_DIR)/include
